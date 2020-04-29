@@ -1,15 +1,15 @@
 # gogo/log
 
-Package gogo/log is a golang package for formatted log messages that works across Linux and Windows supporting ANSI-colors.
+A golang package for formatted log messages that works across Linux and Windows supporting ANSI-colors.
 
-It provides a consistent API for formatting Log Messages (stdout) in CLI Projects for Users.
+**gogo/log** provides a consistent API for formatting Log Messages (stdout) in Golang Command Line Interface Projects.
 
 
 ## Package Dependencies
 
-[githun.com/logrusorgru/aurora](https://github.com/logrusorgru/aurora)
-[github.com/mattn/go-colorable](https://github.com/onsi/ginkgo/tree/master/reporters/stenographer/support/go-colorable)
-[github.com/mattn/go-isatty](https://github.com/onsi/ginkgo/tree/master/reporters/stenographer/support/go-isatty)
+* [github.com/logrusorgru/aurora](https://github.com/logrusorgru/aurora)
+* [github.com/mattn/go-colorable](https://github.com/onsi/ginkgo/tree/master/reporters/stenographer/support/go-colorable)
+* [github.com/mattn/go-isatty](https://github.com/onsi/ginkgo/tree/master/reporters/stenographer/support/go-isatty)
 
 
 ## Basic Usage
@@ -120,3 +120,41 @@ When developing Command Line Utilities (CLI) using Cobra/Viper you can do the fo
 	    rootCmd.PersistentFlags().BoolVar(&options.nonInteractive, "non-interactive", false, "Disable interactive prompts")
 	    rootCmd.PersistentFlags().BoolVarP(&options.overrideConfirmation, "yes", "y", false, "Override confirmations")
     }
+
+## Running Unit Tests
+
+    go test -v
+    === RUN   TestPrint
+    --- PASS: TestPrint (0.00s)
+    === RUN   TestPrintf
+    --- PASS: TestPrintf (0.00s)
+    === RUN   TestVPrint
+    --- PASS: TestVPrint (0.00s)
+    === RUN   TestVPrintf
+    --- PASS: TestVPrintf (0.00s)
+    === RUN   TestDebug
+    --- PASS: TestDebug (0.00s)
+    === RUN   TestDebugf
+    --- PASS: TestDebugf (0.00s)
+    === RUN   TestTrace
+    --- PASS: TestTrace (0.00s)
+    === RUN   TestTracef
+    --- PASS: TestTracef (0.00s)
+    === RUN   TestSuccess
+    --- PASS: TestSuccess (0.00s)
+    === RUN   TestSuccessf
+    --- PASS: TestSuccessf (0.00s)
+    === RUN   TestWarning
+    --- PASS: TestWarning (0.00s)
+    === RUN   TestWarningf
+    --- PASS: TestWarningf (0.00s)
+    === RUN   TestFailure
+    --- PASS: TestFailure (0.00s)
+    === RUN   TestFailuref
+    --- PASS: TestFailuref (0.00s)
+    === RUN   TestError
+    --- PASS: TestError (0.00s)
+    === RUN   TestErrorf
+    --- PASS: TestErrorf (0.00s)
+    PASS
+    ok      github.com/knowntraveler/gogo/log       0.002s
