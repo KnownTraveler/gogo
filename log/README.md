@@ -84,7 +84,7 @@ When developing Command Line Utilities (CLI) using Cobra/Viper you can do the fo
             }
 
             // Configure Logging options from Environment
-            logLevel := os.Getenv("MYCOMMAND_DEBUG")
+            logLevel := os.Getenv("MYCOMMAND_LOG_LEVEL")
 
             if logLevel == "verbose" {
                 log.EnableVerbose()
