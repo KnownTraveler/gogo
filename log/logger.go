@@ -6,7 +6,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-// Package log provides a uniform logging api for formatting log output
+// Package log provides a uniform logging api for formatting log output on linux/windows
 package log
 
 import (
@@ -73,13 +73,13 @@ func Successf(format string, args ...interface{}) {
 	log.Printf(fmt.Sprintf(aurora.BrightGreen("SUCCESS: %v").String(), message))
 }
 
-// Warn logs a message at level Warn
-func Warn(message string) {
+// Warning logs a message at level Warn
+func Warning(message string) {
 	log.Printf(fmt.Sprintf(aurora.BrightYellow("WARNING: %v").String(), message))
 }
 
-// Warnf logs a formatted message at level Warn
-func Warnf(format string, args ...interface{}) {
+// Warningf logs a formatted message at level Warn
+func Warningf(format string, args ...interface{}) {
 	message := fmt.Sprintf(format, args...)
 	log.Printf(fmt.Sprintf(aurora.BrightYellow("WARNING: %v").String(), message))
 }
