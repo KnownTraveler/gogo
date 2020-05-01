@@ -17,6 +17,46 @@ import (
 	"github.com/mitchellh/go-homedir"
 )
 
+// PathExists simply checks if a path exists on the filesystem
+// Returns TRUE if the path does exist
+// Returns FALSE if the path does *not* exist
+func PathExists(path string) (bool, error) {
+	// Check Path
+	_, err := os.Stat(path)
+
+	// Path Does Exist
+	if err == nil {
+		return true, nil
+	}
+
+	// Path Does *Not* Exist
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+
+	return false, err
+}
+
+// PathNotExists simply checks if a path does *not* exist on the filesystem
+// Returns TRUE if the path does *not* exist
+// Returns FALSE if the path does exist
+func PathNotExists(path string) (bool, error) {
+	// Check if Path Does Not Exist
+	_, err := os.Stat(path)
+
+	// Path Does *Not* Exist
+	if os.IsNotExist(err) {
+		return true, nil
+	}
+
+	// Path Does Exist
+	if err == nil {
+		return true, nil
+	}
+
+	return false, err
+}
+
 // CreateDirectory simply checks if the directory path already
 // exists before attempting to create the directory
 func CreateDirectory(path string, mode os.FileMode) error {
@@ -206,5 +246,4 @@ func CreateSymlink(source string, target string) error {
 	}
 
 	return err
-
 }
