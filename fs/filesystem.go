@@ -13,9 +13,33 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 
 	"github.com/mitchellh/go-homedir"
 )
+
+// FileExtension simply returns the Extension from a File Path
+// in format of <filename>.<extension> (e.g. .json|.yaml|.txt etc)
+func FileExtension(filepath string) (string, error) {
+
+	// Check Filepath has .
+	valid := strings.Contains(filepath, ".")
+	if valid == true {
+		// Split Path into a Slice
+		fSlice := strings.Split(filepath, ".")
+
+		// Get the Length of the Slice
+		fSliceLen := len(fSlice)
+
+		// Get the extension of the Filepath from last index position in the Slice (length -1)
+		fileExtension := fSlice[fSliceLen-1]
+
+		// Return the Extension
+		return strings.ToLower(fileExtension), nil
+	}
+	return "", fmt.Errorf("Failed to find File Extension. Filepath must be in format of <filename>.<ext>")
+
+}
 
 // PathExists simply checks if a path exists on the filesystem
 // Returns TRUE if the path does exist
